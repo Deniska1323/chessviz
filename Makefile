@@ -1,11 +1,11 @@
 ﻿all: chess
 
-chess: pf.o sp.o chess.o
-    g++ chess.cpp pf.cpp sp.cpp -o chess
+chess: printF.o sp.o chess.o
+	g++ chess.cpp printF.cpp sp.cpp -o chess
 
-pf.o: pf.cpp
-    g++ -c pf.cpp
+printF.o: printF.cpp
+	g++ -c printF.cpp
 sp.o: sp.cpp
-    g++ -c sp.cpp
+	g++ -c sp.cpp
 clean:
-    rn -rf *.0 chess
+	rn -rf *.0 chess
