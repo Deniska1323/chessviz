@@ -1,5 +1,5 @@
 
 all: chess.o
-	g++ -Wall -g -o chess.o chess.cpp
+	g++ -Wall -Werror -g -o chess.o chess.cpp
 clean:
 	rm -rf *.o chess
