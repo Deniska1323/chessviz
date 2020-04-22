@@ -41,7 +41,7 @@ aa[i][j] = a[i][j];
 
 printF(aa);
 
-int b, b1, b2, b3, t;
+int b, b1, b2, b3;
 std::string sp1;
 
 
