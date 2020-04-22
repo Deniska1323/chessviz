@@ -1,5 +1,11 @@
+﻿all: chess
 
-all: chess.o
-	g++ -Wall -Werror -g -o chess.o chess.cpp
+chess: pf.o sp.o chess.o
+    g++ chess.cpp pf.cpp sp.cpp -o chess
+
+pf.o: pf.cpp
+    g++ -c pf.cpp
+sp.o: sp.cpp
+    g++ -c sp.cpp
 clean:
-	rm -rf *.o chess
+    rn -rf *.0 chess
