@@ -1,6 +1,9 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include"sp.hpp"
+#include "printF.hpp"
+
 using namespace std;
 
 void printF(char** aa)
