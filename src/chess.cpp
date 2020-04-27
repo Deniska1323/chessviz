@@ -1,12 +1,10 @@
+#include "printF.hpp"
+#include "sp.hpp"
 #include <fstream>
 #include <iostream>
 #include <string>
-#include"sp.hpp"
-#include "printF.hpp"
 
 using namespace std;
-
-
 
 int main()
 {
@@ -38,4 +36,4 @@ int main()
         printF(aa);
     }
     std::cout << "Goodbye!\n";
-}
+})
