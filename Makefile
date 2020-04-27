@@ -1,11 +1,20 @@
-﻿all: chess
+all: bin/chess format
 
-chess: printF.o sp.o chess.o
-	g++ chess.cpp printF.cpp sp.cpp -o chess
+bin/chess: build/chess.o build/pf.o build/sp.o
+	g++ -Wall -Werror  build/chess.o build/pf.o build/sp.o -o bin/chess
 
-printF.o: printF.cpp
-	g++ -c printF.cpp
-sp.o: sp.cpp
-	g++ -c sp.cpp
+build/chess.o: src/chess.cpp src/pf.hpp src/sp.hpp
+	clang-format -i src/chess.cpp
+	g++ -Wall -Werror -I src -c src/chess.cpp -o build/chess.o
+
+build/pf.o: src/pf.cpp
+	g++ -Wall -Werror -I src -c src/pf.cpp -o build/pf.o
+	
+build/sp.o: src/sp.cpp
+	g++ -Wall -Werror -I src -c src/sp.cpp -o build/sp.o
+
+format: src/pf.cpp src/pf.hpp src/sp.cpp src/sp.hpp src/chess.cpp
+
 clean:
-	rn -rf *.0 chess
+	rm -rf build/*.o bin/chess bin/*.o *.o
+
