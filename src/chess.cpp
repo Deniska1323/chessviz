@@ -36,4 +36,4 @@ int main()
         printF(aa);
     }
     std::cout << "Goodbye!\n";
-})
+}
