@@ -1,10 +1,7 @@
-#include "printF.hpp"
+#include "pf.hpp"
 #include "sp.hpp"
-#include <fstream>
 #include <iostream>
 #include <string>
-
-using namespace std;
 
 int main()
 {
@@ -29,11 +26,12 @@ int main()
             aa[i][j] = a[i][j];
         }
     }
-    printF(aa);
-
+    pf(aa);
+    std::cout << "\nInput: e2e4m\nExit the program: exit\n";
     while (g == 1) {
         g = sp(aa);
-        printF(aa);
+        std::cout << "\n";
+        pf(aa);
     }
     std::cout << "Goodbye!\n";
 }
