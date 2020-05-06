@@ -1,4 +1,4 @@
-#include "pf.hpp"
+#include "printF.hpp"
 #include "sp.hpp"
 #include <iostream>
 #include <string>
@@ -26,12 +26,12 @@ int main()
             aa[i][j] = a[i][j];
         }
     }
-    pf(aa);
+    printF(aa);
     std::cout << "\nInput: e2e4m\nExit the program: exit\n";
     while (g == 1) {
         g = sp(aa);
         std::cout << "\n";
-        pf(aa);
+        printF(aa);
     }
     std::cout << "Goodbye!\n";
 }
