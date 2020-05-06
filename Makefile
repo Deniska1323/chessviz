@@ -17,6 +17,6 @@ build/checkmove.o: src/checkmove.cpp
 	g++ -Wall -Werror -I src -c src/checkmove.cpp -o build/checkmove.o
 
 format: src/printF.cpp src/printF.hpp src/sp.cpp src/sp.hpp src/chess.cpp src/checkmove.cpp src/checkmove.hpp
-
+	clang-format -i src/printF.cpp src/sp.cpp src/chess.cpp src/checkmove.cpp 
 clean:
 	rm -rf build/*.o bin/chess bin/*.o *.o
