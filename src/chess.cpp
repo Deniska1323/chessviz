@@ -1,10 +1,7 @@
 #include "printF.hpp"
 #include "sp.hpp"
-#include <fstream>
 #include <iostream>
 #include <string>
-
-using namespace std;
 
 int main()
 {
@@ -30,9 +27,10 @@ int main()
         }
     }
     printF(aa);
-
+    std::cout << "\nInput: e2e4m\nExit the program: exit\n";
     while (g == 1) {
         g = sp(aa);
+        std::cout << "\n";
         printF(aa);
     }
     std::cout << "Goodbye!\n";
