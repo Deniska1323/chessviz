@@ -1,29 +1,28 @@
-#include <iostream>
-#include <string>
-#include "sp.hpp"
-#include "checkmove.hpp"
+#include "sp.h"
+#include "checkfite.h"
+#include "checkmove.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-int sp(char** aa)
+int sp(char aa[9][9])
 {
-    std::string sp1;
-    sp1 = "";
+    char sp1[6], sp[] = "exit", sp2[] = "Exit";
+    int b, b1, b2, b3, b4, t = 1, s = strlen(sp1);
 
-    int b, b1, b2, b3, b4, t = 1, s = sp1.length();
-
-    std::cout << "Player: "; 
+    printf("::");
     b = 11;
     b1 = 11;
     b2 = 11;
     b3 = 11;
     b4 = 11;
     while (s != 5 || t == 1) {
-    	//std::cout<< "("<< s <<")\n";
-        std::cin >> sp1;
-        s = sp1.length();
-        if (sp1 == "exit" || sp1 == "Exit") {
+        scanf("%s", sp1);
+        s = strlen(sp1);
+        if (strcmp(sp1, sp) == 0 || strcmp(sp1, sp2) == 0) {
             return 0;
         }
-		        
+
         switch (sp1[0]) {
         case 'a':
             b = 1;
@@ -50,10 +49,11 @@ int sp(char** aa)
             b = 8;
             break;
         default:
-            std::cout << "0:";
+            // std::cout << "0:";
+            printf("0:");
             break;
-		}
-		switch (sp1[1]) {
+        }
+        switch (sp1[1]) {
         case '1':
             b1 = 7;
             break;
@@ -79,7 +79,7 @@ int sp(char** aa)
             b1 = 0;
             break;
         default:
-            std::cout << "1:";
+            printf("1:");
             break;
         }
         switch (sp1[2]) {
@@ -108,10 +108,10 @@ int sp(char** aa)
             b2 = 8;
             break;
         default:
-            std::cout << "2:";
+            printf("2:");
             break;
-		}
-		switch (sp1[3]) {
+        }
+        switch (sp1[3]) {
         case '1':
             b3 = 7;
             break;
@@ -137,7 +137,7 @@ int sp(char** aa)
             b3 = 0;
             break;
         default:
-            std::cout << "3:";
+            printf("3:");
             break;
         }
         switch (sp1[4]) {
@@ -148,24 +148,28 @@ int sp(char** aa)
             b4 = 0;
             break;
         default:
-            std::cout << "4:";
+            printf("4:");
             break;
         }
-        
-        t = checkmove(b, b1, b2, b3, b4, aa);
-        
+
+        if (b != 11 && b1 != 11 && b2 != 11 && b3 != 11 && b4 != 11) {
+            t = 0;
+            if (!(aa[b1][b] == aa[b3][b2] || aa[b1][b] == '.')) {
+                if (b4 == 0) {
+                    t = checkmove(b, b1, b2, b3, b4, aa);
+                }
+                if (b4 == 1) {
+                    t = checkfite(b, b1, b2, b3, b4, aa);
+                }
+            }
+
+        } else {
+            printf("5:");
         }
-    
-        
-        ////////
-    
-    
+    }
+
     aa[b3][b2] = aa[b1][b];
     aa[b1][b] = '.';
-
-    sp1 = "";
-    // t = 1;
-    // break;
 
     return 1;
 }
