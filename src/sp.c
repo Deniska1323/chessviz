@@ -173,4 +173,3 @@ int sp(char aa[9][9])
 
     return 1;
 }
-

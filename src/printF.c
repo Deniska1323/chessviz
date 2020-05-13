@@ -1,8 +1,8 @@
-#include "pf.h"
+#include "printF.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-void pf(char aa[9][9])
+void printF(char aa[9][9])
 {
     system("clear");
     int i, j;

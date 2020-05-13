@@ -1,5 +1,5 @@
-#ifndef PF_H
-#define PF_H
+#ifndef PRINTF_H
+#define PRINTF_H
 
 void printF(char aa[9][9]);
 
