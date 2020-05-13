@@ -1,22 +1,27 @@
 all: bin/chess format
 
-bin/chess: build/chess.o build/printF.o build/sp.o build/checkmove.o
-	g++ -Wall -Werror  build/chess.o build/printF.o build/sp.o build/checkmove.o -o bin/chess
+bin/chess: build/chess.o build/printF.o build/sp.o build/checkmove.o build/checkfite.o 
+	gcc -Wall -Werror  build/chess.o build/printF.o build/sp.o build/checkmove.o build/checkfite.o -o bin/chess
 
-build/chess.o: src/chess.cpp src/printF.hpp src/sp.hpp
-	clang-format -i src/chess.cpp
-	g++ -Wall -Werror -I src -c src/chess.cpp -o build/chess.o
+build/chess.o: src/chess.c src/printF.h src/sp.h
+	clang-format -i src/chess.c
+	gcc -Wall -Werror -I src -c src/chess.c -o build/chess.o
 
-build/printF.o: src/printF.cpp
-	g++ -Wall -Werror -I src -c src/printF.cpp -o build/printF.o
+build/printF.o: src/printF.c
+	gcc -Wall -Werror -I src -c src/printF.c -o build/printF.o
 	
-build/sp.o: src/sp.cpp src/checkmove.hpp
-	g++ -Wall -Werror -I src -c src/sp.cpp -o build/sp.o
+build/sp.o: src/sp.c src/checkmove.h src/checkfite.h
+	gcc -Wall -Werror -I src -c src/sp.c -o build/sp.o
 	
-build/checkmove.o: src/checkmove.cpp
-	g++ -Wall -Werror -I src -c src/checkmove.cpp -o build/checkmove.o
+build/checkmove.o: src/checkmove.c
+	gcc -Wall -Werror -I src -c src/checkmove.c -o build/checkmove.o
+	
+build/checkfite.o: src/checkfite.c
+	gcc -Wall -Werror -I src -c src/checkfite.c -o build/checkfite.o
 
-format: src/printF.cpp src/printF.hpp src/sp.cpp src/sp.hpp src/chess.cpp src/checkmove.cpp src/checkmove.hpp
-	clang-format -i src/printF.cpp src/sp.cpp src/chess.cpp src/checkmove.cpp 
+format: src/printF.c src/printF.h src/sp.c src/sp.h src/chess.c src/checkmove.c src/checkmove.h src/checkfite.c src/checkfite.h
+	clang-format -i src/printF.c src/sp.c src/chess.c src/checkmove.c src/checkfite.c
+	
 clean:
 	rm -rf build/*.o bin/chess bin/*.o *.o
+
