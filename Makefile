@@ -1,11 +1,14 @@
-all:bin/chess_test bin/chess format 
+all:bin/chess_test    bin/chess format 
 
-bin/chess_test: build/chess_test.o build/sp.o build/printF.o build/checkmove.o build/checkfite.o   
-	gcc -Wall -Werror build/chess_test.o build/sp.o build/printF.o build/checkmove.o build/checkfite.o   -o bin/chess_test
+bin/chess_test: build/main.o build/board_test.o build/sp.o build/printF.o build/checkmove.o build/checkfite.o   
+	gcc -Wall -Werror build/main.o build/sp.o build/board_test.o build/printF.o build/checkmove.o build/checkfite.o   -o bin/chess_test
 
 
-build/chess_test.o: test/main.c thirdparty/ctest.h
-	gcc -I thirdparty -I src -c test/main.c -o build/chess_test.o
+build/main.o: test/main.c thirdparty/ctest.h
+	gcc -I thirdparty -I src -c test/main.c -o build/main.o
+
+build/board_test.o: test/board_test.c thirdparty/ctest.h 
+	gcc -I thirdparty -I src -c test/board_test.c -o build/board_test.o
 
 bin/chess: build/chess.o build/printF.o build/sp.o build/checkmove.o build/checkfite.o 
 	gcc -Wall -Werror  build/chess.o build/printF.o build/sp.o build/checkmove.o build/checkfite.o -o bin/chess

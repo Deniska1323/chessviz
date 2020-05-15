@@ -1,8 +1,9 @@
-#include "ctest/ctest.h"
+#include "ctest.h"
 #include "checkfite.h"
 #include "checkmove.h"
 #include "printF.h"
 #include "sp.h"
+
 
 CTEST(P_Move, Correct) {
     int result = board_func("b2b3", 1);
@@ -71,7 +72,7 @@ CTEST(K_Move, Incorrect) {
 }
 
 CTEST(K_Move, correct) {
-    int result = board_func("d1-d2", 1);
+    int result = board_func("d1d2", 1);
     int expected = 0;
     ASSERT_EQUAL(expected,result);
 }
