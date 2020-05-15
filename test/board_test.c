@@ -1,78 +1,191 @@
 #include "ctest.h"
 #include "checkfite.h"
-#include "checkmove.h"
-#include "printF.h"
 #include "sp.h"
+#include "printF.h"
+#include "checkmove.h"
+
+int t;
 
 
-CTEST(P_Move, Correct) {
-    int result = board_func("b2b3", 1);
+
+
+CTEST(P_Move, Correct) { char aa[9][9] = {{'8', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
+                     {'7', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+                     {'6', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'5', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'3', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'2', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
+                     {'1', 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'},
+                     {' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'}};
+    char mv[255] = "b2b3m";
+    int result = checkmove( 2, 6,2,5,0,aa);
     int expected = 0;
     ASSERT_EQUAL(expected,result);
 }
 
-CTEST(P_Move, Incorrect) {
-    int result = board_func("b2c3", 1);
+
+CTEST(P_Move, Incorrect) { char aa[9][9] = {{'8', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
+                     {'7', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+                     {'6', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'5', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'3', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'2', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
+                     {'1', 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'},
+                     {' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'}};
+    char mv[255] = "b2c3m";
+    int result = checkmove(2, 6,3,5,0,aa);
     int expected = 1;
     ASSERT_EQUAL(expected,result);
 }
 
-CTEST(R_Move, Correct) {
-    int result = board_func("a1a5", 1);
+CTEST(R_Move, Correct) { char aa[9][9] = {{'8', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
+                     {'7', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+                     {'6', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'5', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'3', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'2', '.', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
+                     {'1', 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'},
+                     {' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'}};
+    char mv[255] = "a1a5m";
+    int result = checkmove(1,7,1,3,0,aa);
     int expected = 0;
     ASSERT_EQUAL(expected,result);
 }
 
-CTEST(R_Move, Incorrect) {
-    int result = board_func("a1c3", 1);
+CTEST(R_Move, Incorrect) { char aa[9][9] = {{'8', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
+                     {'7', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+                     {'6', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'5', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'3', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'2', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
+                     {'1', 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'},
+                     {' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'}};
+    char mv[255] = "a1c3m";
+    int result = checkmove(1,7,3,5,0,aa);
     int expected = 1;
     ASSERT_EQUAL(expected,result);
 }
 
-CTEST(N_Move, Correct) {
-    int result = board_func("b1c3", 1);
+CTEST(N_Move, Correct) { char aa[9][9] = {{'8', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
+                     {'7', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+                     {'6', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'5', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'3', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'2', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
+                     {'1', 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'},
+                     {' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'}};
+    char mv[255] = "b1c3m";
+    int result = checkmove(2,7,3,5,0,aa);
     int expected = 0;
     ASSERT_EQUAL(expected,result);
 }
 
-CTEST(N_Move, Incorrect) {
-    int result = board_func("b1b3", 1);
+CTEST(N_Move, Incorrect) { char aa[9][9] = {{'8', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
+                     {'7', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+                     {'6', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'5', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'3', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'2', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
+                     {'1', 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'},
+                     {' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'}};
+    char mv[255] = "b1b3m";
+    int result = checkmove(2,7,2,5,0,aa);
     int expected = 1;
     ASSERT_EQUAL(expected,result);
 }
 
-CTEST(B_Move, Correct) {
-    int result = board_func("c1d3", 1);
+CTEST(B_Move, Correct) { char aa[9][9] = {{'8', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
+                     {'7', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+                     {'6', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'5', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'3', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'2', 'P', '.', '.', '.', '.', 'P', 'P', 'P'},
+                     {'1', 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'},
+                     {' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'}};
+    char mv[255] = "c1d2m";
+    int result = checkmove(3,7,4,6,0,aa);
     int expected = 0;
     ASSERT_EQUAL(expected,result);
 }
 
-CTEST(B_Move, Incorrect) {
-    int result = board_func("c1d3", 1);
+CTEST(B_Move, Incorrect) { char aa[9][9] = {{'8', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
+                     {'7', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+                     {'6', '.', '.', '.', '.', '.', '.', '.', '.'},	
+                     {'5', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'3', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'2', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
+                     {'1', 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'},
+                     {' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'}};
+    char mv[255] = "c1d3m";
+    int result = checkmove(3,7,4,5,0,aa);
     int expected = 1;
     ASSERT_EQUAL(expected,result);
 }
 
-CTEST(Q_Move, Correct) {
-    int result = board_func("d1d5", 1);
+CTEST(Q_Move, Correct) { char aa[9][9] = {{'8', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
+                     {'7', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+                     {'6', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'5', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'3', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'2', 'P', 'P', 'P', '.', 'P', 'P', 'P', 'P'},
+                     {'1', 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'},
+                     {' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'}};
+     char mv[255] = "d1d5m";
+    int result = checkmove(4,7,4,3,0,aa);
     int expected = 0;
     ASSERT_EQUAL(expected,result);
 }
 
-CTEST(Q_Move, Incorrect) {
-    int result = board_func("d1c3", 1);
+CTEST(Q_Move, Incorrect) { char aa[9][9] = {{'8', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
+                     {'7', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+                     {'6', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'5', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'3', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'2', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
+                     {'1', 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'},
+                     {' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'}};
+    char mv[255] = "d1c3m";
+    int result = checkmove(4,7,4,6,0,aa);
     int expected = 1;
     ASSERT_EQUAL(expected,result);
 }
 
-CTEST(K_Move, Incorrect) {
-    int result = board_func("d1c3", 1);
+CTEST(K_Move, Incorrect) { char aa[9][9] = {{'8', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
+                     {'7', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+                     {'6', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'5', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'3', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'2', 'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
+                     {'1', 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'},
+                     {' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'}};
+    char mv[255] = "d1d3m";
+    int result = checkmove(4,7,4,5,0,aa);
     int expected = 1;
     ASSERT_EQUAL(expected,result);
 }
 
-CTEST(K_Move, correct) {
-    int result = board_func("d1d2", 1);
+CTEST(K_Move, correct) { char aa[9][9] = {{'8', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
+                     {'7', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+                     {'6', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'5', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'4', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'3', '.', '.', '.', '.', '.', '.', '.', '.'},
+                     {'2', 'P', 'P', 'P', '.', 'P', 'P', 'P', 'P'},
+                     {'1', 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'},
+                     {' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'}};
+    char mv[255] = "d1d2m";
+    int result = checkmove(4,7,4,6,0,aa);
     int expected = 0;
     ASSERT_EQUAL(expected,result);
 }
