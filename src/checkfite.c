@@ -380,18 +380,18 @@ int checkfite(int b, int b1, int b2, int b3, int b4, char aa[9][9])
                     t = 1;
                 }
             }
-            f = aa[b1][b];
-            if (f > 64 && f < 91) { //выс рег
-                f = aa[b3][b2];
-                if (!(f > 96 && f < 123)) { //низ рег
-                    t = 1;
-                }
-            } else if (f > 96 && f < 123) {
-                f = aa[b3][b2];
-                if (!(f > 64 && f < 91)) {
-                    t = 1;
-                }
-            } else {
+        } else {
+            t = 1;
+        }
+        f = aa[b1][b];
+        if (f > 64 && f < 91) { //выс рег
+            f = aa[b3][b2];
+            if (!(f > 96 && f < 123)) { //низ рег
+                t = 1;
+            }
+        } else if (f > 96 && f < 123) {
+            f = aa[b3][b2];
+            if (!(f > 64 && f < 91)) {
                 t = 1;
             }
         }

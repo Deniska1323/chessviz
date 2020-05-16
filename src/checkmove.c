@@ -158,15 +158,12 @@ int checkmove(int b, int b1, int b2, int b3, int b4, char aa[9][9])
         }
     }
     if (aa[b1][b] == 'Q' || aa[b1][b] == 'q') {
-        if (b == b2) {                      //вертикаль
+        if (b == b2 && b1 != b3) {          //вертикаль
             if (b1 > b3) {                  //вперед
                 for (i = b1; i > b3; i--) { //вертикаль цыфры (b1 -- b3)
                     if (!(aa[i - 1][b] == '.')) { //есть п-е
                         t = 1;
                     }
-                }
-                if (!(b == b2)) { //проверка вертикали
-                    t = 1;
                 }
             }
             if (b1 < b3) {                  //назад
@@ -174,9 +171,6 @@ int checkmove(int b, int b1, int b2, int b3, int b4, char aa[9][9])
                     if (!(aa[i + 1][b] == '.')) { //есть п-е
                         t = 1;
                     }
-                }
-                if (!(b == b2)) { //проверка вертикали
-                    t = 1;
                 }
             }
         } else if (b != b2 && b1 == b3) {          //горизонт
@@ -186,18 +180,12 @@ int checkmove(int b, int b1, int b2, int b3, int b4, char aa[9][9])
                         t = 1;
                     }
                 }
-                if (!(b1 == b3)) { //проверка горизонт
-                    t = 1;
-                }
             }
             if (b < b2) {                          //вправо
                 for (i = b; i < b2; i++) {         //горизонт (b -- b2)
                     if (!(aa[b1][i + 1] == '.')) { //есть п-е
                         t = 1;
                     }
-                }
-                if (!(b1 == b3)) { //проверка вертикали
-                    t = 1;
                 }
             }
         } else if (abs(b1 - b3) == abs(b - b2)) { //ход по диоганали
@@ -222,6 +210,8 @@ int checkmove(int b, int b1, int b2, int b3, int b4, char aa[9][9])
                     t = 1;
                 }
             }
+        } else {
+            t = 1;
         }
     }
 
